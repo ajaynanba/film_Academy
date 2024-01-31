@@ -1,0 +1,86 @@
+{
+  "kind": "collectionType",
+  "collectionName": "forms",
+  "info": {
+    "singularName": "form",
+    "pluralName": "forms",
+    "displayName": "Form",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "MovieName": {
+      "type": "string"
+    },
+    "MovieThumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "MoviePoster": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "VideoFile": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "videos"
+      ]
+    },
+    "Language": {
+      "type": "string"
+    },
+    "Genres": {
+      "type": "string"
+    },
+    "Actors": {
+      "type": "string"
+    },
+    "Directors": {
+      "type": "string"
+    },
+    "contentRating": {
+      "type": "string"
+    },
+    "Duration": {
+      "type": "string"
+    },
+    "userName": {
+      "type": "string"
+    },
+    "mobileNumber": {
+      "type": "biginteger",
+      "unique": false
+    },
+    "email": {
+      "type": "email",
+      "unique": false
+    },
+    "Description": {
+      "type": "text"
+    },
+    "dummy": {
+      "type": "richtext"
+    },
+    "ckDemo": {
+      "type": "customField",
+      "options": {
+        "output": "HTML",
+        "preset": "rich"
+      },
+      "customField": "plugin::ckeditor.CKEditor"
+    }
+  }
+}
