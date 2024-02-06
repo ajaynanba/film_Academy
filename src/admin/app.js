@@ -1,10 +1,11 @@
 import favicon from "./extensions/favicon.png";
+import logo from "./extensions/bfftLogo.jpg"
 
 export default {
   config: {
     // replace favicon with a custom icon
     head: {
-      favicon: favicon,
+      favicon: logo,
     },
     locales: ["en"],
       translations: {

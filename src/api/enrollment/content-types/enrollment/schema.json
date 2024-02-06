@@ -1,0 +1,70 @@
+{
+  "kind": "collectionType",
+  "collectionName": "enrollments",
+  "info": {
+    "singularName": "enrollment",
+    "pluralName": "enrollments",
+    "displayName": "enrollment",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "FirstName": {
+      "type": "string"
+    },
+    "MobileNumber": {
+      "type": "string"
+    },
+    "Age": {
+      "type": "string"
+    },
+    "gender": {
+      "type": "string"
+    },
+    "Nationality": {
+      "type": "string"
+    },
+    "EducationOrGraduation": {
+      "type": "string"
+    },
+    "Address": {
+      "type": "text"
+    },
+    "Image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "Course": {
+      "type": "string"
+    },
+    "payment_id": {
+      "type": "string"
+    },
+    "LastName": {
+      "type": "string"
+    },
+    "Working": {
+      "type": "string"
+    },
+    "payment_status": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "integer"
+    },
+    "EmailId": {
+      "type": "string",
+      "unique": true
+    }
+  }
+}

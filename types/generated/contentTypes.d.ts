@@ -362,6 +362,51 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
+export interface ApiEnrollmentEnrollment extends Schema.CollectionType {
+  collectionName: 'enrollments';
+  info: {
+    singularName: 'enrollment';
+    pluralName: 'enrollments';
+    displayName: 'enrollment';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    FirstName: Attribute.String;
+    MobileNumber: Attribute.String;
+    Age: Attribute.String;
+    gender: Attribute.String;
+    Nationality: Attribute.String;
+    EducationOrGraduation: Attribute.String;
+    Address: Attribute.Text;
+    Image: Attribute.Media;
+    Course: Attribute.String;
+    payment_id: Attribute.String;
+    LastName: Attribute.String;
+    Working: Attribute.String;
+    payment_status: Attribute.String;
+    amount: Attribute.Integer;
+    EmailId: Attribute.String & Attribute.Unique;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::enrollment.enrollment',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::enrollment.enrollment',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiFormForm extends Schema.CollectionType {
   collectionName: 'forms';
   info: {
@@ -388,52 +433,15 @@ export interface ApiFormForm extends Schema.CollectionType {
     mobileNumber: Attribute.BigInteger;
     email: Attribute.Email;
     Description: Attribute.Text;
-    dummy: Attribute.RichText;
-    ckDemo: Attribute.RichText &
-      Attribute.CustomField<
-        'plugin::ckeditor.CKEditor',
-        {
-          output: 'HTML';
-          preset: 'rich';
-        }
-      >;
+    thumbnailUrl: Attribute.String;
+    posterUrl: Attribute.String;
+    movieUrl: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::form.form', 'oneToOne', 'admin::user'> &
       Attribute.Private;
     updatedBy: Attribute.Relation<'api::form.form', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
-export interface ApiPhotoPhoto extends Schema.CollectionType {
-  collectionName: 'photos';
-  info: {
-    singularName: 'photo';
-    pluralName: 'photos';
-    displayName: 'photo';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    image: Attribute.Media;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::photo.photo',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::photo.photo',
-      'oneToOne',
-      'admin::user'
-    > &
       Attribute.Private;
   };
 }
@@ -752,71 +760,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface PluginMuxVideoUploaderMuxAsset extends Schema.CollectionType {
-  collectionName: 'muxassets';
-  info: {
-    name: 'mux-asset';
-    description: 'Represents a Mux Asset item, including upload and playback details';
-    displayName: 'Mux Asset';
-    singularName: 'mux-asset';
-    pluralName: 'mux-assets';
-  };
-  options: {
-    increments: true;
-    timestamps: true;
-  };
-  pluginOptions: {
-    'content-manager': {
-      visible: true;
-    };
-    'content-type-builder': {
-      visible: true;
-    };
-  };
-  attributes: {
-    title: Attribute.String &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        minLength: 3;
-        maxLength: 255;
-      }>;
-    upload_id: Attribute.String &
-      Attribute.SetMinMaxLength<{
-        maxLength: 255;
-      }>;
-    asset_id: Attribute.String &
-      Attribute.SetMinMaxLength<{
-        maxLength: 255;
-      }>;
-    playback_id: Attribute.String &
-      Attribute.SetMinMaxLength<{
-        maxLength: 255;
-      }>;
-    signed: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<false>;
-    error_message: Attribute.String &
-      Attribute.SetMinMaxLength<{
-        maxLength: 255;
-      }>;
-    isReady: Attribute.Boolean & Attribute.DefaultTo<false>;
-    duration: Attribute.Decimal;
-    aspect_ratio: Attribute.String;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'plugin::mux-video-uploader.mux-asset',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'plugin::mux-video-uploader.mux-asset',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -827,15 +770,14 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
+      'api::enrollment.enrollment': ApiEnrollmentEnrollment;
       'api::form.form': ApiFormForm;
-      'api::photo.photo': ApiPhotoPhoto;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::i18n.locale': PluginI18NLocale;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'plugin::mux-video-uploader.mux-asset': PluginMuxVideoUploaderMuxAsset;
     }
   }
 }

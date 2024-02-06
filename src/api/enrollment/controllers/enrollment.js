@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * photo controller
+ * enrollment controller
  */
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = createCoreController('api::photo.photo');
+module.exports = createCoreController('api::enrollment.enrollment');

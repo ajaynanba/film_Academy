@@ -71,16 +71,14 @@
     "Description": {
       "type": "text"
     },
-    "dummy": {
-      "type": "richtext"
+    "thumbnailUrl": {
+      "type": "string"
     },
-    "ckDemo": {
-      "type": "customField",
-      "options": {
-        "output": "HTML",
-        "preset": "rich"
-      },
-      "customField": "plugin::ckeditor.CKEditor"
+    "posterUrl": {
+      "type": "string"
+    },
+    "movieUrl": {
+      "type": "string"
     }
   }
 }

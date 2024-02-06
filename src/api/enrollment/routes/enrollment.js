@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * photo router
+ * enrollment router
  */
 
 const { createCoreRouter } = require('@strapi/strapi').factories;
 
-module.exports = createCoreRouter('api::photo.photo');
+module.exports = createCoreRouter('api::enrollment.enrollment');

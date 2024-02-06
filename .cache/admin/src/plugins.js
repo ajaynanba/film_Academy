@@ -7,7 +7,6 @@ import strapiCloud from '@strapi/plugin-cloud/strapi-admin';
 import documentation from '@strapi/plugin-documentation/strapi-admin';
 import i18N from '@strapi/plugin-i18n/strapi-admin';
 import usersPermissions from '@strapi/plugin-users-permissions/strapi-admin';
-import muxVideoUploader from 'strapi-plugin-mux-video-uploader/strapi-admin';
 
 
 const plugins = {
@@ -19,7 +18,6 @@ const plugins = {
   'documentation': documentation,
   'i18n': i18N,
   'users-permissions': usersPermissions,
-  'mux-video-uploader': muxVideoUploader,
 };
 
 export default plugins;
